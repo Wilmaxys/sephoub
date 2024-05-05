@@ -1,0 +1,76 @@
+// .wrapper {
+//   width: 80%;
+//   margin: 0 auto;
+//   position: relative;
+//   z-index: 2;
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .background .background-fade {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background: linear-gradient(
+//     0deg,
+//     rgba(17, 22, 26, 0.9752101524203431) 3%,
+//     rgba(255, 255, 255, 0) 32%,
+//     rgba(255, 255, 255, 0) 100%
+//   );
+// }
+
+// @media screen and (max-width: 1080px) {
+//   .content .main {
+//     width: 100%;
+//   }
+
+//   .header {
+//     flex-direction: column;
+//     padding: 20px 10px 0px 10px;
+//     align-items: flex-start;
+//   }
+
+//   .header .menu .element {
+//     margin-left: 0;
+//     margin-right: 10px;
+//   }
+
+//   .header .button {
+//     margin: 10px 10px 0 0;
+//   }
+
+//   .content {
+//     margin-top: 40px;
+//   }
+
+//   .content .main {
+//     margin-top: 20px;
+//     text-align: left;
+//   }
+
+//   .content .main .menu {
+//     flex-direction: column;
+//     width: 100%;
+//   }
+
+//   .content .main .title {
+//     width: 100%;
+//   }
+
+//   .content .main .paragraph {
+//     width: 100%;
+//   }
+
+//   .content .main .menu .button {
+//     text-align: center;
+//     margin: 10px 0 0 0;
+//     flex-grow: 1;
+//   }
+
+//   .box-center .box {
+//     width: 95%;
+//   }
+// }

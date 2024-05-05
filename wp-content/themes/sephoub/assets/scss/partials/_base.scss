@@ -1,8 +1,9 @@
-// Add any custom base CSS can go here
+@import "./colors";
 
+body {
+  background-color: $back-dark;
+}
 
-// Foundation
-// =≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠=≠
 html {
   @apply antialiased;
   font-size: 15px;
@@ -11,4 +12,6 @@ html {
   @screen md {
     font-size: 18px;
   }
+
+  box-sizing: border-box;
 }

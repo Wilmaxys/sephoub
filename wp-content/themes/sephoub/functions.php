@@ -12,11 +12,24 @@ use SeaPicture\View;
  * i.e; If a class named SomeClass is stored in app/SomeDir/SomeClass.php, there is no need to include/require that file
  * as the autoloader will handle that for you.
  */
+
+function my_js_var_stylesheet_directory()
+{
+    echo '<script type="text/javascript">';
+    echo 'var stylesheetDir = "' . get_bloginfo('stylesheet_directory') . '"';
+    echo '</script>';
+}
+
 require get_stylesheet_directory() . '/app/AutoLoader.php';
 $loader = new AutoLoader();
 $loader->register();
-$loader->addNamespace( 'SeaPicture', get_stylesheet_directory() . '/app' );
+$loader->addNamespace('SeaPicture', get_stylesheet_directory() . '/app');
 
 View::$view_dir = get_stylesheet_directory() . '/templates/views';
 
 require get_stylesheet_directory() . '/includes/scripts-and-styles.php';
+require get_stylesheet_directory() . '/app/removeUnnecessaryMenu.php';
+require get_stylesheet_directory() . '/app/addTemplates.php';
+add_action('wp_head', 'my_js_var_stylesheet_directory', 9);
+
+
