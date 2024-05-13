@@ -130,8 +130,6 @@ var openModal = function openModal(src) {
 window.onload = function () {
   var slider = document.querySelector(".slider");
   var imageFlex = document.querySelector(".image-flex");
-  var largeCard = document.querySelector(".large-card");
-  var smallCards = document.querySelectorAll(".small-card");
   var cards = document.querySelectorAll(".card");
   if (slider) {
     var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -155,7 +153,6 @@ window.onload = function () {
       arrowRight.classList.add("hidden");
     }
     window.addEventListener("resize", function () {
-      console.log("Resize before", slider.style.left);
       slider.style.left = 0;
       vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
       nbElementPerPage = vw >= 1024 ? 4 : vw >= 768 ? 3 : vw >= 640 ? 2 : 1;
@@ -163,7 +160,6 @@ window.onload = function () {
       currentPurcent = 0;
       maxPage = Math.ceil(elementCount / nbElementPerPage) - 1;
       purcentageLastPage = nbElementPerPage > 1 ? elementCount % nbElementPerPage * (100 / nbElementPerPage) : 100;
-      console.log("Resize before", slider.style.left);
     }, true);
     arrowLeft.addEventListener("click", function () {
       if (currentPage == maxPage) {
@@ -208,26 +204,24 @@ window.onload = function () {
       modal.classList.add("hidden");
     });
   }
-  if (largeCard) {
-    largeCard.addEventListener("mouseover", function (event) {
-      console.log("large card");
-    });
-    if (smallCards) {
-      cards.forEach(function (focusCard) {
-        focusCard.addEventListener("mouseover", function (event) {
+  if (cards) {
+    cards.forEach(function (focusCard) {
+      focusCard.addEventListener("mouseover", function (event) {
+        console.log(window.innerWidth);
+        if (window.innerWidth > 640) {
           cards.forEach(function (card) {
-            card.classList.remove("w-1/2");
-            card.classList.add("w-1/5");
-            var title = card.querySelector(".title");
+            card.classList.remove("sm:w-2/5");
+            card.classList.add("sm:w-1/5");
             var desc = card.querySelector(".desc");
-            !desc.classList.contains("hidden") && desc.classList.add("hidden");
-            !title.classList.contains("text-2xl", "transform", "-rotate-90") && title.classList.add("text-2xl", "transform", "-rotate-90");
+            !desc.classList.contains("sm:hidden") && desc.classList.add("sm:hidden");
           });
-          focusCard.classList.remove("w-1/5");
-          focusCard.classList.add("w-1/2");
-        });
+          focusCard.classList.remove("sm:w-1/5");
+          focusCard.classList.add("sm:w-2/5");
+          var desc = focusCard.querySelector(".desc");
+          desc.classList.contains("sm:hidden") && desc.classList.remove("sm:hidden");
+        } else {}
       });
-    }
+    });
   }
 };
 
@@ -251,8 +245,8 @@ window.onload = function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/benjaminragot/Perso/sea_picture/wp-content/themes/sephoub/assets/js/app.js */"./assets/js/app.js");
-module.exports = __webpack_require__(/*! /Users/benjaminragot/Perso/sea_picture/wp-content/themes/sephoub/assets/scss/app.scss */"./assets/scss/app.scss");
+__webpack_require__(/*! C:\Users\Waren\Repos\sephoub\wp-content\themes\sephoub\assets\js\app.js */"./assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Waren\Repos\sephoub\wp-content\themes\sephoub\assets\scss\app.scss */"./assets/scss/app.scss");
 
 
 /***/ })

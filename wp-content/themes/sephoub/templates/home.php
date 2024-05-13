@@ -9,82 +9,138 @@
   </div>
 </div>
 
-<div class="project-back">
-  <div class="container mx-auto px-4 py-8">
-    <h2 class="text-2xl font-bold mb-6">Projects</h2>
-    <div class="flex h-full -mx-2 images-block">
-      <!-- Large Card -->
-      <div class="large-card card w-1/2 px-2 transition-all duration-200 ease-out">
-        <div class=" h-full w-full overflow-hidden relative">
-          <img class="object-cover rounded-lg h-full w-full"
-            src="<?php bloginfo('stylesheet_directory') ?>/public/img/Course2.png" alt="Sports">
-          <div class="rounded-lg background-fade"></div>
-          <div class="absolute bottom-0 left-0 p-4 w-full">
-            <h3 class="title font-bold">SPORTS</h3>
-            <p class="desc text-gray-300 text-xs text-justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat luctus leo ac ullamcorper. F
-              u sce nec vehicula turpis, auctor tincidunt nunc. Suspendisse semper arcu non vulputate semper. Integer
-              fringilla nunc a nisl faucibus ultricies.Mauris egestas auctor nunc et laoreet.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="small-card card w-1/5 px-2 transition-all duration-200 ease-out">
-        <div class=" h-full w-full overflow-hidden relative">
-          <img class="object-cover rounded-lg h-full w-full"
-            src="<?php bloginfo('stylesheet_directory') ?>/public/img/Course2.png" alt="Sports">
-          <div class="rounded-lg background-fade"></div>
-          <div class="absolute bottom-0 left-0 top-0 p-4 w-full flex items-center justify-center">
-            <h3 class="title font-bold text-2xl transform -rotate-90">SPORTS</h3>
-            <p class="desc text-gray-300 text-xs text-justify hidden">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat luctus leo ac ullamcorper. F
-              u sce nec vehicula turpis, auctor tincidunt nunc. Suspendisse semper arcu non vulputate semper. Integer
-              fringilla nunc a nisl faucibus ultricies.Mauris egestas auctor nunc et laoreet.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="small-card card w-1/5 px-2 transition-all duration-200 ease-out">
-        <div class=" h-full w-full overflow-hidden relative">
-          <img class="object-cover rounded-lg h-full w-full"
-            src="<?php bloginfo('stylesheet_directory') ?>/public/img/Course2.png" alt="Sports">
-          <div class="rounded-lg background-fade"></div>
-          <div class="absolute bottom-0 left-0 top-0 p-4 w-full flex items-center justify-center">
-            <h3 class="title font-bold text-2xl transform -rotate-90">SPORTS</h3>
-            <p class="desc text-gray-300 text-xs text-justify hidden">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat luctus leo ac ullamcorper. F
-              u sce nec vehicula turpis, auctor tincidunt nunc. Suspendisse semper arcu non vulputate semper. Integer
-              fringilla nunc a nisl faucibus ultricies.Mauris egestas auctor nunc et laoreet.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="small-card card w-1/5 px-2 transition-all duration-200 ease-out">
-        <div class=" h-full w-full overflow-hidden relative">
-          <img class="object-cover rounded-lg h-full w-full"
-            src="<?php bloginfo('stylesheet_directory') ?>/public/img/Course2.png" alt="Sports">
-          <div class="rounded-lg background-fade"></div>
-          <div class="absolute bottom-0 left-0 top-0 p-4 w-full flex items-center justify-center">
-            <h3 class="title font-bold text-2xl transform -rotate-90">SPORTS</h3>
-            <p class="desc text-gray-300 text-xs text-justify hidden">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat luctus leo ac ullamcorper. F
-              u sce nec vehicula turpis, auctor tincidunt nunc. Suspendisse semper arcu non vulputate semper. Integer
-              fringilla nunc a nisl faucibus ultricies.Mauris egestas auctor nunc et laoreet.
-            </p>
-          </div>
-        </div>
-      </div>
+<div class="container mx-auto px-4 py-8 sm:min-h-0 text-gray-300">
+  <h2 class="text-2xl font-bold mb-6">Projects</h2>
+  <div class="flex flex-col sm:flex-row sm:-mx-2">
+    <?php
+    $posts = get_posts(
+      array(
+        'posts_per_page' => 4,
+        'post_type' => 'project'
+      )
+    );
 
-    </div>
+    $index = 0;
+    if ($posts):
+      foreach ($posts as $post):
+        if ($index == 0): ?>
+          <div class="card relative w-full sm:h-64 h-32 sm:w-2/5 mb-3 overflow-hidden rounded-lg sm:mx-2 sm:cursor-pointer">
+            <img src="<?php the_field('couverture'); ?>" alt="Sports" class="object-cover rounded-lg h-full w-full">
+            <div class="background-fade"></div>
+            <div class="absolute bottom-0 left-0 p-2 w-3/4 sm:w-full flex flex-col items-start">
+              <h3 class="title font-bold  text-xl"><?php the_title(); ?></h3>
+              <p class="desc text-xs text-justify w-full h-16 text-ellipsis overflow-hidden py-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat luctus leo ac ullamcorper. F
+                u sce nec vehicula turpis, auctor tincidunt nunc. Suspendisse semper arcu non vulputate semper. Integer
+                fringilla nunc a nisl faucibus ultricies. Mauris egestas auctor nunc et laoreet.
+              </p>
+            </div>
+            <div class="plus-button absolute bottom-0 right-0 p-2 w-1/4 flex justify-end overflow-hidden sm:hidden">
+              <h3 class="bg-gray-700 rounded-lg text-sm w-full text-center sm:cursor-default cursor-pointer">Plus</h3>
+            </div>
+          </div>
+        <?php else: ?>
+          <div class="card relative w-full sm:h-64 h-32 sm:w-1/5 mb-3 overflow-hidden rounded-lg sm:mx-2 sm:cursor-pointer">
+            <img src="<?php the_field('couverture'); ?>" alt="Sports" class="object-cover rounded-lg h-full w-full">
+            <div class="background-fade"></div>
+            <div class="absolute bottom-0 left-0 p-2 w-3/4 sm:w-full flex flex-col items-start">
+              <h3 class="title font-bold  text-xl"><?php the_title(); ?></h3>
+              <p class="desc text-xs text-justify w-full h-16 text-ellipsis overflow-hidden py-2 sm:hidden">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat luctus leo ac ullamcorper. F
+                u sce nec vehicula turpis, auctor tincidunt nunc. Suspendisse semper arcu non vulputate semper. Integer
+                fringilla nunc a nisl faucibus ultricies. Mauris egestas auctor nunc et laoreet.
+              </p>
+            </div>
+            <div class="plus-button absolute bottom-0 right-0 p-2 w-1/4 flex justify-end overflow-hidden sm:hidden">
+              <h3 class="bg-gray-700 rounded-lg text-sm w-full text-center sm:cursor-default cursor-pointer">Plus</h3>
+            </div>
+          </div>
+          <?php
+        endif;
+        $index++;
+      endforeach;
+      wp_reset_postdata(); ?>
+    <?php endif; ?>
   </div>
 </div>
 
 
-<div class="about-back">
+<?php
+$projects = get_posts(
+  array(
+    'posts_per_page' => -1,
+    'post_type' => 'project'
+  )
+);
+
+if ($projects): ?>
+  <?php foreach ($projects as $key => $value): ?>
+    <?php if ($key <= 5): ?>
+      <?php if ($key >= 1): ?>
+
+        <!-- <a href="<?php the_permalink(); ?>" class="h-full w-full absolute"></a> -->
+      <?php else: ?>
+
+      <?php endif; ?>
+    <?php endif; ?>
+  <?php endforeach; ?>
+<?php endif; ?>
+
+
+<div class="text-gray-300 about-block container mx-auto px-4 py-8">
+  <h2 class="text-2xl font-bold mb-6">A propos</h2>
+  <div class="grid">
+    <div class="col-start-1 sm:col-end-2 col-end-3">
+      <img src="<?php bloginfo('stylesheet_directory') ?>/public/img/Estelle.png" alt="Description"
+        class="rounded-lg shadow-md object-cover h-full w-full">
+    </div>
+
+    <div class="sm:col-start-2 col-start-3 col-end-5 sm:col-end-3 sm:row-start-1 sm:row-end-3">
+      <img src="<?php bloginfo('stylesheet_directory') ?>/public/img/back.png" alt="Description"
+        class="rounded-lg shadow-md object-cover h-full w-full">
+    </div>
+
+    <div class="col-start-1 col-end-3 sm:col-start-3 sm:col-end-5">
+      <img src="<?php bloginfo('stylesheet_directory') ?>/public/img/Elo.png" alt="Description"
+        class="rounded-lg shadow-md object-cover h-full w-full">
+    </div>
+
+    <div class="sm:col-start-1 col-start-3 col-end-5 sm:col-end-2 row-start-2 row-end-3 sm:row-end-4">
+      <img src="<?php bloginfo('stylesheet_directory') ?>/public/img/Ron.png" alt="Description"
+        class="rounded-lg shadow-md object-cover h-full w-full">
+    </div>
+
+    <div class="col-start-3 col-end-4 hidden sm:block">
+      <img src="<?php bloginfo('stylesheet_directory') ?>/public/img/Norig.png" alt="Description"
+        class="rounded-lg shadow-md object-cover h-full w-full">
+    </div>
+
+    <div class="col-start-4 col-end-5 hidden sm:block">
+      <img src="<?php bloginfo('stylesheet_directory') ?>/public/img/Louise.png" alt="Description"
+        class="rounded-lg shadow-md object-cover h-full w-full">
+    </div>
+
+    <div class="rounded-lg bg-gray-900 shadow-m relative sm:col-start-2 col-start-1 col-end-5 overflow-hidden ">
+      <img src="<?php bloginfo('stylesheet_directory') ?>/public/img/Course.png" alt="Description"
+        class="rounded-lg shadow-md object-cover h-full w-full filter blur-md opacity-50">
+      <div class="text-sm p-2 absolute top-0 bottom-0 left-0 right-0">
+        <div class="text-lg font-bold">Test</div>
+        <div class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat luctus leo ac
+          ullamcorper. Fusce nec vehicula turpis, auctor tincidunt nunc. Suspendisse semper arcu non vulputate semper.
+          Integer fringilla nunc a nisl faucibus ultricies. Mauris egestas auctor nunc et laoreet. Vivamus aliquet
+          viverra quam, a ornare ante pulvinar a. Mauris cursus ut purus sed convallis. Nulla sit amet nibh magna.
+          Mauris dignissim lorem magna.</div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- <div class="about-back">
   <div class="about-block container mx-auto px-4 py-8">
     <h2 class="text-2xl font-bold mb-6">About me</h2>
     <div class="equal-height-rows">
-      <!-- <div class="col-span-4 text-2xl font-bold mb-4">About me</div> -->
 
       <div class="col-span-1">
         <img src="<?php bloginfo('stylesheet_directory') ?>/public/img/Estelle.png" alt="Description"
@@ -132,10 +188,10 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="py-8">
-  <h2 class="text-2xl font-bold mb-2 px-4 container mx-auto text-white">Photoshoots</h2>
+  <h2 class="text-2xl font-bold mb-2 px-4 container mx-auto text-gray-300">Photoshoots</h2>
   <div class="slider-container px-4">
     <div class="slider-global container mx-auto">
       <div class="slider-wrapper">
@@ -154,7 +210,7 @@
                 <div class="element relative m-1 hover:m-0">
                   <img src="<?php the_field('couverture'); ?>" class="object-cover rounded-lg h-full w-full absolute">
                   <div class="rounded-lg background-fade"></div>
-                  <div class="title absolute flex-col flex items-center justify-end w-full h-full pb-2 text-white ">
+                  <div class="title absolute flex-col flex items-center justify-end w-full h-full pb-2 text-gray-300 ">
                     <span class="text-xl">
                       <?php the_field('date'); ?>
                     </span>

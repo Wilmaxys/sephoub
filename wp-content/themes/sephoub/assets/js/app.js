@@ -39,8 +39,6 @@ const openModal = (src) => {
 window.onload = () => {
   const slider = document.querySelector(".slider");
   const imageFlex = document.querySelector(".image-flex");
-  const largeCard = document.querySelector(".large-card");
-  const smallCards = document.querySelectorAll(".small-card");
   const cards = document.querySelectorAll(".card");
   if (slider) {
     let vw = Math.max(
@@ -76,7 +74,6 @@ window.onload = () => {
     window.addEventListener(
       "resize",
       () => {
-        console.log("Resize before", slider.style.left);
         slider.style.left = 0;
         vw = Math.max(
           document.documentElement.clientWidth || 0,
@@ -90,7 +87,6 @@ window.onload = () => {
           nbElementPerPage > 1
             ? (elementCount % nbElementPerPage) * (100 / nbElementPerPage)
             : 100;
-        console.log("Resize before", slider.style.left);
       },
       true
     );
@@ -140,27 +136,28 @@ window.onload = () => {
       modal.classList.add("hidden");
     });
   }
-  if (largeCard) {
-    largeCard.addEventListener("mouseover", (event) => {
-      console.log("large card");
-    });
-    if (smallCards) {
-      cards.forEach((focusCard) => {
-        focusCard.addEventListener("mouseover", (event) => {
-          cards.forEach((card) => {
-            card.classList.remove("w-1/2");
-            card.classList.add("w-1/5");
-            const title = card.querySelector(".title");
-            const desc = card.querySelector(".desc");
 
-            !desc.classList.contains("hidden") && desc.classList.add("hidden");
-            !title.classList.contains("text-2xl", "transform", "-rotate-90") &&
-              title.classList.add("text-2xl", "transform", "-rotate-90");
+  if (cards) {
+    cards.forEach((focusCard) => {
+      focusCard.addEventListener("mouseover", (event) => {
+        console.log(window.innerWidth)
+        if (window.innerWidth > 640) {
+          cards.forEach((card) => {
+            card.classList.remove("sm:w-2/5");
+            card.classList.add("sm:w-1/5");
+            const desc = card.querySelector(".desc");
+  
+            !desc.classList.contains("sm:hidden") && desc.classList.add("sm:hidden");
           });
-          focusCard.classList.remove("w-1/5");
-          focusCard.classList.add("w-1/2");
-        });
+          focusCard.classList.remove("sm:w-1/5");
+          focusCard.classList.add("sm:w-2/5");
+          const desc = focusCard.querySelector(".desc");
+          desc.classList.contains("sm:hidden") && desc.classList.remove("sm:hidden");
+        }
+        else {
+
+        }
       });
-    }
+    });
   }
 };

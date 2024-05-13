@@ -23872,42 +23872,10 @@ html {
   background: linear-gradient(180deg, rgba(45, 45, 45, 0) 0%, rgb(45, 45, 45) 100%);
 }
 
-.project-back {
-  background-color: #18191a;
-  color: white;
-}
-
-.project-back .images-block {
-  height: 500px;
-}
-
-.about-back {
-  background-color: #1f2429;
-  color: white;
-}
-
-.about-back .about-block .equal-height-rows {
-  display: grid;
+.about-block .grid {
   grid-template-rows: repeat(3, 300px);
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-}
-
-.about-back .about-block .equal-height-rows .container-blur {
-  position: relative;
-  overflow: hidden;
-}
-
-.about-back .about-block .equal-height-rows .container-blur img {
-  filter: blur(10px);
-}
-
-.about-back .about-block .equal-height-rows .container-blur .content-blur {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
 }
 
 .slider-container {

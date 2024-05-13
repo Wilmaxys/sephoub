@@ -3,7 +3,7 @@ function load_templates_from_custom_folder($template)
 {
     $post_type = get_post_type();
 
-    $custom_post_types = array('photoshoot', );
+    $custom_post_types = array('photoshoot', 'project');
 
     if (in_array($post_type, $custom_post_types)) {
         // Check for different template types
