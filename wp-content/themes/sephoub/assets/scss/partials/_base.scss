@@ -5,13 +5,8 @@ body {
 }
 
 html {
-  @apply antialiased;
   font-size: 15px;
   text-rendering: optimizeLegibility;
-
-  @screen md {
-    font-size: 18px;
-  }
 
   box-sizing: border-box;
 }

@@ -10,15 +10,48 @@ $back-dark: #18191a;
   color: white;
 
   background: rgba(24, 25, 26, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(9.5px);
   -webkit-backdrop-filter: blur(9.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+.bree {
+  font-family: 'Bree' !important;
+}
+
+.continuo {
+  font-family: 'Continuo' !important;
+}
+
+.basicsans {
+  font-family: 'BasicSans' !important;
+}
+
+@font-face {
+  font-family: 'Bree';
+  src: URL('../font/Bree_Bold_Oblique.otf') format('opentype'),
+       URL('../font/Bree_Bold.otf') format('opentype'),
+       URL('../font/Bree_ExtraBold_Oblique.otf') format('opentype'),
+       URL('../font/Bree_ExtraBold.otf') format('opentype'),
+       URL('../font/Bree_Light_Oblique.otf') format('opentype'),
+       URL('../font/Bree_Light.otf') format('opentype'),
+       URL('../font/Bree_Oblique.otf') format('opentype'),
+       URL('../font/Bree_Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'BasicSans';
+  src:  URL('../font/BasicSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Continuo';
+  src: URL('../font/Continuo.ttf') format('truetype');
+}
+
 .home-background {
-  background-image: url("../img/back.png");
+  background-image: url("../img/back.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -112,4 +145,17 @@ $back-dark: #18191a;
   .image-wrapper {
     max-height: 300px;
   }
+}
+
+.form-container {
+  background-color: $back-light;
+  color: white;
+  border-radius: 10px;
+  input, textarea {
+    color: $back-light
+  }
+}
+
+.cardReco {
+  background-color: $back-light;
 }

@@ -26,6 +26,7 @@ mix.sass("assets/scss/app.scss", "css").options({
   processCssUrls: false,
 });
 mix.copy("./assets/img", "public/img");
+mix.copy("./assets/font", "public/font");
 
 if (mix.inProduction()) {
   mix.versionHash();

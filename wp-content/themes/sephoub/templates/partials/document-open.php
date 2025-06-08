@@ -13,4 +13,4 @@
 	<?php wp_head() ?>
 </head>
 
-<body class="font-sans leading-normal tracking-normal" <?php body_class() ?>>
+<body class="font-sans leading-normal tracking-normal basicsans" <?php body_class() ?>>

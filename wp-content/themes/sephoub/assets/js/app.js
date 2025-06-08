@@ -36,9 +36,16 @@ const openModal = (src) => {
   document.querySelector(".modal-content").src = src;
 };
 
+const openModalForm = (src) => {
+  document.querySelector(".modal").classList.remove("hidden");
+};
+
 window.onload = () => {
   const slider = document.querySelector(".slider");
   const imageFlex = document.querySelector(".image-flex");
+  const customForm = document.querySelector("#custom-form");
+  const notif = document.querySelector("#notif");
+  const contactButton = document.querySelector(".contact-button");
   const cards = document.querySelectorAll(".card");
   if (slider) {
     let vw = Math.max(
@@ -120,6 +127,54 @@ window.onload = () => {
     images.forEach(function (img) {
       img.addEventListener("click", function () {
         openModal(this.src);
+      });
+    });
+
+    const modal = document.querySelector(".modal");
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        modal.classList.add("hidden");
+      }
+    });
+
+    // Close modal functionality
+    const span = document.querySelector(".close");
+    span.addEventListener("click", function () {
+      modal.classList.add("hidden");
+    });
+  }
+
+  if (customForm && notif) {
+    document.querySelector("#custom-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+  
+      const formData = new FormData(event.target);
+  
+      const response = await fetch("/wp-admin/admin-ajax.php", {
+          method: "POST",
+          body: formData,
+      });
+  
+      if (!response.ok) {
+          alert("Error submitting the form.");
+          return;
+      }
+  
+      const modal = document.querySelector(".modal");
+      await response.json();
+      modal.classList.add("hidden");
+      notif.classList.remove("hidden");
+  });
+  document.querySelector("#notif-svg").addEventListener("click", async (event) => {
+    notif.classList.add("hidden");
+  });
+  }
+
+  if (contactButton) {
+    const images = document.querySelectorAll(".contact-button");
+    images.forEach(function (img) {
+      img.addEventListener("click", function () {
+        openModalForm(this.src);
       });
     });
 
